@@ -1,13 +1,24 @@
 from graph import Graph
 
 
+def dfs_aux(graph, vertex, vertices_marked, mark, dfs_order):
+    if vertices_marked[vertex] != None:
+        return []
+    vertices_marked[vertex] = mark
+    dfs_order.append(vertex)
+    for neighbour in graph.get_neighbours(vertex):
+        dfs_aux(graph, neighbour, vertices_marked, mark, dfs_order)
+
+#output: two lists, dfs order and a dictionary(vertex, mark)
 def dfs(graph):
-    output = []
-    mark = 1
+    dfs_order = []
     vertices = graph.get_vertices()
     vertices_marked = {}
     for vertex in vertices:
-        vertices_marked[vertex] = False
+        mark = vertex
+        vertices_marked[vertex] = None
     for vertex in vertices:
-        if not vertices_marked[vertex]:
-            pass
+        mark = vertex
+        dfs_aux(graph, vertex, vertices_marked, mark, dfs_order)
+    output = [dfs_order, vertices_marked]
+    return output

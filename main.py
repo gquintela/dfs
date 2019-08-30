@@ -12,5 +12,7 @@ my_graph.add_directed_edge('t', 'x')
 my_graph.add_directed_edge('u', 'y')
 my_graph.add_directed_edge('t', 'w')
 my_graph.add_directed_edge('u', 'x')
+my_graph.add_directed_edge('a', 'b')
+my_graph.add_vertex('z')
 
-
+print(dfs(my_graph))

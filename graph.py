@@ -4,7 +4,7 @@ class Graph:
         self.size = 0
 
     def get_vertices(self):
-        output = {}
+        output = set()
         for vertex in self.adjacency_list:
             output.add(vertex)
         return output
